@@ -1,10 +1,10 @@
 import { FC } from "react"
 
-const Column:FC = () => {
+const Column:FC = ({children}) => {
     return (
-        <div>
-            
-        </div>
+        <td>
+            {children}
+        </td>
     )
 }
 

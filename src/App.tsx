@@ -1,16 +1,13 @@
 // import React from 'react';
  
 import './App.css';
-import Cell from './components/Cell/Cell';
+ 
+import SheetView from './views/SheetView';
 
 function App() {
 
   return (
-    <>
-    <Cell>
-      Non edit mode
-    </Cell> 
-   </>
+   <SheetView/>
   );
 }
 

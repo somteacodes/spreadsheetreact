@@ -1,10 +1,10 @@
 import { FC } from "react"
 
-const Row:FC = () => {
+const Row:FC = ( {children}) => {
     return (
-        <div>
-            
-        </div>
+        <tr>
+            {children} 
+        </tr>
     )
 }
 

@@ -1,10 +1,11 @@
 import { FC } from "react"
+import Sheet from "../components/Sheet/Sheet"
 
 const SheetView:FC = () => {
     return (
-        <div>
-            
-        </div>
+       
+            <Sheet/>
+       
     )
 }
 

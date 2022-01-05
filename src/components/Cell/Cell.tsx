@@ -44,7 +44,7 @@ const Cell: FC<CellProps> = (props) => {
       {editMode ? (
         <input ref={inputRef} value={cellValue} data-cell-key="2" className="cellInput" onChange={updateCellValue}/>
       ) : (
-        <div data-cell-key="2" onClick={changeLabelToInput}>
+        <div data-cell-key="2" onClick={changeLabelToInput} className="cellLabel">
           {cellValue}
         </div>
       )}
