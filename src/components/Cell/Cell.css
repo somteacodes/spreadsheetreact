@@ -1,0 +1,16 @@
+.cellInput{
+    width: 85%;
+    height: 100%;
+    padding: 12px 1px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    border: 1px solid black;
+    transition: box-shadow 0.1s ease-in;
+  
+}
+
+.cellInput:focus{
+    border: 1px solid rgb(233, 17, 17);
+    outline: none;
+    box-shadow:0 0 15px 4px rgba(0, 0, 0, 0.2);
+}

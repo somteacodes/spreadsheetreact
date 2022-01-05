@@ -1,12 +1,16 @@
 // import React from 'react';
  
 import './App.css';
+import Cell from './components/Cell/Cell';
 
 function App() {
+
   return (
-    <div className="App">
-     
-    </div>
+    <>
+    <Cell>
+      Non edit mode
+    </Cell> 
+   </>
   );
 }
 
