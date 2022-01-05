@@ -4,14 +4,16 @@ import  {useRecoilState} from 'recoil'
 
 import {cellValueState} from '../../store/cellStore'
 
-type CellProps = {};
+type CellProps = {
+  cellKey:string
+};
 
 const Cell: FC<CellProps> = (props) => {
 
   // states
   const [editMode, setEditMode] = useState(false);
   const inputRef = useRef(null);
-  const [cellValue, setCellValue] = useRecoilState(cellValueState)
+  const [cellValue, setCellValue] = useRecoilState<string>(cellValueState(props.cellKey))
   // functions
   const changeLabelToInput = () => {
     setEditMode(true);
@@ -20,7 +22,7 @@ const Cell: FC<CellProps> = (props) => {
     setEditMode(false);
   };
   const onClickOutsideInputHandler = (event: MouseEvent) => {
-    if ((event.target as HTMLElement)?.dataset?.cellKey !== "2") {
+    if ((event.target as HTMLElement)?.dataset?.cellKey !== props.cellKey) {
       changeInputToLabel();
       
     } else {
@@ -42,9 +44,9 @@ const Cell: FC<CellProps> = (props) => {
   return (
     <>
       {editMode ? (
-        <input ref={inputRef} value={cellValue} data-cell-key="2" className="cellInput" onChange={updateCellValue}/>
+        <input ref={inputRef} value={cellValue} data-cell-key={props.cellKey} className="cellInput" onChange={updateCellValue}/>
       ) : (
-        <div data-cell-key="2" onClick={changeLabelToInput} className="cellLabel">
+        <div data-cell-key={props.cellKey} onClick={changeLabelToInput} className="cellLabel">
           {cellValue}
         </div>
       )}

@@ -4,12 +4,12 @@ import Cell from "../Cell/Cell"
 import Column from "../Column/Column"
 import Row from "../Row/Row"
 import {sheetConfig} from '../../store/sheetStore'
-
+import './Sheet.css'
 const Sheet:FC = () => {
 
     const {numOfCols, numOfRows} = useRecoilValue(sheetConfig)
     return (
-        <table>
+        <table className="sheet">
             <tbody>
 
                 {[...Array(numOfRows)].map((row, rowIndex) => 
@@ -17,7 +17,7 @@ const Sheet:FC = () => {
                         {
                             [...Array(numOfCols)].map((col,colIndex) =>
                             <Column key={colIndex}>
-                                <Cell/>
+                                <Cell cellKey={`${rowIndex}_${colIndex}`}/>
                             </Column>
                             )
                         }

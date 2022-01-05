@@ -8,7 +8,7 @@ import { RecoilRoot } from 'recoil';
 ReactDOM.render(
   <RecoilRoot>
     <App />
-   </RecoilRoot>,
+  </RecoilRoot> ,
   document.getElementById('root')
 );
 

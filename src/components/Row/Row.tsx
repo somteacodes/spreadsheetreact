@@ -2,7 +2,7 @@ import { FC } from "react"
 
 const Row:FC = ( {children}) => {
     return (
-        <tr>
+        <tr className="row">
             {children} 
         </tr>
     )

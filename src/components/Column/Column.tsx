@@ -1,8 +1,8 @@
 import { FC } from "react"
-
+import './Column.css'
 const Column:FC = ({children}) => {
     return (
-        <td>
+        <td className="column">
             {children}
         </td>
     )

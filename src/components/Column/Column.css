@@ -1,0 +1,11 @@
+.column{
+    width: 100px;
+    max-width:100px;
+    min-width:100px;
+    height: 25px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding:0px;
+    border-spacing:0;
+    margin:0px;
+}
