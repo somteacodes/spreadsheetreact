@@ -1,12 +1,10 @@
 import { FC, useState, useEffect, useRef, ChangeEvent } from "react";
 import './Cell.css'
-import {atom, useRecoilState} from 'recoil'
-type CellProps = {};
-const cellValueState = atom({
-  key:'cell',
-  default:"Hello"
-})
+import  {useRecoilState} from 'recoil'
 
+import {cellValueState} from '../../store/cellStore'
+
+type CellProps = {};
 
 const Cell: FC<CellProps> = (props) => {
 
