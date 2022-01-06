@@ -1,0 +1,11 @@
+.axis{
+    background:rgb(218, 218, 218);
+    color:black;
+    font-weight:600;
+    font-size:0.8rem;
+    text-align:center;
+    vertical-align:center;
+    border-right: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    border-spacing:0px;
+}
