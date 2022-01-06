@@ -3,39 +3,55 @@ import "./Cell.css";
 import { useRecoilState } from "recoil";
 
 import { cellValueState } from "../../store/cellStore";
-
+import {sheetData} from '../../store/sheetStore'
 type CellProps = {
   cellKey: string;
 };
 
-const Cell: FC<CellProps> = (props) => {
+const Cell: FC<CellProps> = ({cellKey}) => {
   // states
   const [editMode, setEditMode] = useState(false);
   const inputRef = useRef(null);
   const [cellValue, setCellValue] = useRecoilState<string>(
-    cellValueState(props.cellKey)
+    cellValueState(cellKey)
   );
+
+  const [sheetDataState, setSheetDataState] = useRecoilState(
+    sheetData
+  )
+
   // functions
   const changeLabelToInput = () => {
     setEditMode(true);
   };
   const changeInputToLabel = () => {
     setEditMode(false);
+ 
+    
   };
   
   const onClickOutsideInputHandler = (event: MouseEvent) => {
-    if ((event.target as HTMLElement)?.dataset?.cellKey !== props.cellKey) {
+    if ((event.target as HTMLElement)?.dataset?.cellKey !== cellKey) {
       changeInputToLabel();
-    } 
+      // setSheetDataState({...sheetDataState, [cellKey]: cellValue})
+    
+    } else{
+      console.log('sheet state',sheetDataState)
+    }
   };
 
   const removeInputFocus= (event:KeyboardEvent<HTMLInputElement>)=>{
       if(event.key ==='Enter'){
-        setEditMode(false);
+        changeInputToLabel();
+   
+        setSheetDataState({...sheetDataState, [cellKey]: cellValue})
+        // console.log('sheet state',sheetDataState)
       }
+     
   }
   const updateCellValue = (event: ChangeEvent<HTMLInputElement>) => {
     setCellValue(event.target.value);
+       
   };
 
   // lifecycles and sideEffects
@@ -51,14 +67,14 @@ const Cell: FC<CellProps> = (props) => {
         <input
           ref={inputRef}
           value={cellValue}
-          data-cell-key={props.cellKey}
+          data-cell-key={cellKey}
           className="cellInput"
           onChange={updateCellValue}
           onKeyDown={removeInputFocus}
         />
       ) : (
         <div
-          data-cell-key={props.cellKey}
+          data-cell-key={cellKey}
           onClick={changeLabelToInput}
           className="cellLabel"
         >

@@ -6,3 +6,8 @@ export const sheetConfig= atom({
     numOfRows:10, //number of rows
     }
 })
+
+export const sheetData = atom({
+    key:'sheetData',
+    default:{}
+})
