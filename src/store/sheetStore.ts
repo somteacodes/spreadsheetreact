@@ -3,7 +3,7 @@ export const sheetConfig= atom({
     key: 'sheetConfig',
     default: {
     numOfCols:10, //number of columns
-    numOfRows:10, //number of rows
+    numOfRows:200, //number of rows
     }
 })
 
