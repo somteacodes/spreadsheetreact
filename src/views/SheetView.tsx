@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import Sheet from "../components/Sheet/Sheet";
-import { useRecoilCallback, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { sheetConfig, sheetData } from "../store/sheetStore";
 const SheetView: FC = () => {
  const currentSheetData = useRecoilValue(sheetData)

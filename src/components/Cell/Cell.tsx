@@ -1,11 +1,10 @@
 import { FC, useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from "react";
 import "./Cell.css";
 import { useRecoilState,useRecoilValue } from "recoil";
-
 import { cellValueState } from "../../store/cellStore";
 import {sheetData} from '../../store/sheetStore'
 import { evaluatedCellValueStore } from "../../store/EvaluatedCellValueStore";
-import { cellKeyToMatrix } from "../../utils/cellKeyToMatrix";
+ 
 type CellProps = {
   cellKey: string;
 };
@@ -21,61 +20,25 @@ const Cell: FC<CellProps> = ({cellKey}) => {
   const [sheetDataState, setSheetDataState] = useRecoilState(
     sheetData
   )
-const [displayCellValue, setDisplayCellValue] = useState('')
-  // functions
-  const changeLabelToInput = () => {
-    setEditMode(true);
-  };
-  const changeInputToLabel = () => {
-    setEditMode(false);
  
-    
-  };
+  // functions
+  const changeLabelToInput = () =>  setEditMode(true);
+  const changeInputToLabel = () => setEditMode(false);
   
   const onClickOutsideInputHandler = (event: MouseEvent) => {
     if ((event.target as HTMLElement)?.dataset?.cellKey !== cellKey) {
-      changeInputToLabel();
-      // setSheetDataState({...sheetDataState, [cellKey]: cellValue})
-    
-    } else{
-      // console.log('sheet state',sheetDataState)
-    }
+      changeInputToLabel();   
+     } 
   };
 
   const removeInputFocus= (event:KeyboardEvent<HTMLInputElement>)=>{
       if(event.key ==='Enter'){
-        changeInputToLabel();   
-        
-
-        // if(cellValue.startsWith('=')){
-         
-          // console.log('on enter', cellKeyToMatrix(EvaluatedCellValueStore))
-          // const newCellKey=cellKeyToMatrix(EvaluatedCellValueStore)
-          // const newCellValue=sheetDataState[newCellKey as keyof typeof sheetDataState] 
-          // if(newCellValue){
-          //   setSheetDataState({...sheetDataState, [cellKey]: newCellValue})
-          //   console.log('sheet state',newCellValue)
-          //     // setCellValue(newCellValue)
-          //     setDisplayCellValue(newCellValue)
-          // }else{
-          //   setCellValue('')
-          //   console.log('undefined cell value')
-          // }
-         
-        // }else{
-          // console.log('on enter',cellKey)
-          // setDisplayCellValue(cellValue)
-          // console.log('sheet state no reference done',sheetDataState)
-        // }
-      
-        // console.log('sheet state',sheetDataState)
-      }
-     
+        changeInputToLabel();  
+      }     
   }
   const updateCellValue = (event: ChangeEvent<HTMLInputElement>) => {
     setCellValue(event.target.value);
-    setSheetDataState({...sheetDataState, [cellKey]: event.target.value})
-       
+    setSheetDataState({...sheetDataState, [cellKey]: event.target.value})     
   };
 
   // lifecycles and sideEffects
@@ -101,9 +64,7 @@ const [displayCellValue, setDisplayCellValue] = useState('')
           data-cell-key={cellKey}
           onClick={changeLabelToInput}
           className="cellLabel"
-        >
-          {/* {displayCellValue} */}
-          {/* {cellKey} */}
+        >    
           {EvaluatedCellValueStore}
         </div>
       )}
