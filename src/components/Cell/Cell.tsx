@@ -34,11 +34,12 @@ const Cell: FC<CellProps> = ({cellKey}) => {
   const removeInputFocus= (event:KeyboardEvent<HTMLInputElement>)=>{
       if(event.key ==='Enter'){
         changeInputToLabel();  
+        setSheetDataState({...sheetDataState, [cellKey]: cellValue}) 
       }     
   }
   const updateCellValue = (event: ChangeEvent<HTMLInputElement>) => {
     setCellValue(event.target.value);
-    setSheetDataState({...sheetDataState, [cellKey]: event.target.value})     
+    //  setSheetDataState({...sheetDataState, [cellKey]: event.target.value})     
   };
 
   // lifecycles and sideEffects
