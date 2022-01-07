@@ -2,29 +2,29 @@
     background: #188038;
     
   }
+  .blue-btn {
+    background: #1a1880;
+  }
+  .black-btn {
+    background: #1d1d1d;    
+  }
+  
   .btn{
       color: white;
       font-weight: 700;
       font-size: 14px;
-      height: 36px;
-      cursor: pointer;
-      border: 1px solid transparent;
+      border:none;
+      cursor: pointer; 
       border-radius: 4px;
       font-size: 14px;
       padding: 10px 20px;
       text-transform: capitalize;
       text-decoration:none;
+      margin:0px 4px;
       box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.377);
   }
   .btn:hover{
       filter: saturate(100%) contrast(180%);   
-  }
-  .blue-btn {
-    background: #1a1880;
-  }
-  .black-btn {
-    background: #1d1d1d;
-    
   }
   
   .optionsRow {
