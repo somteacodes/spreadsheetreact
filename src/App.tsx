@@ -2,12 +2,17 @@
  
 import './App.css';
  
-import SheetView from './views/SheetView';
 
+import Navigation from "./components/Navigation/Navigation";
+import { Outlet } from 'react-router-dom';
 function App() {
 
   return (
-   <SheetView/>
+    <>
+     <Navigation/>
+     <Outlet/>
+    </>
+   
   );
 }
 

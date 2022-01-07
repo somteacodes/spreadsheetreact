@@ -16,7 +16,7 @@ export const getEquationExpression = (
     }
 
     // no need to spread if limits of expression input is in the format /[A-Z]+[0-9]/
-  const cellValues = [...Array.from(expression.matchAll(/[A-Z]+[0-9]/gi))]
+  const cellValues = [...Array.from(expression.matchAll(/[A-Z]+[0-9]+/gi))]
     .map((regrexOutput: any) => regrexOutput[0])
     .map((cellKey: string) => {
       const { row, column } = cellKeyToMatrix(expression);
