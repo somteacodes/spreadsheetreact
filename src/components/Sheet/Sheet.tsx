@@ -13,7 +13,7 @@ const Sheet:FC = () => {
     return (
         <table className="sheet">
             <tbody>
-                {/* row header */}
+                {/* clumn header */}
                 <Row>
                     {[...Array(numOfCols+1)].map((col, colIndex)=>
                     colIndex === 0 ? <Axis key={colIndex}/>: <Axis key={colIndex}>{numToLetter(colIndex) }</Axis>
@@ -21,7 +21,7 @@ const Sheet:FC = () => {
                 </Row>
                 {[...Array(numOfRows)].map((row, rowIndex) => 
                 <Row key={rowIndex}>
-                    {/* column header */}
+                    {/* row header */}
                     <Axis key={rowIndex}>{rowIndex+1}</Axis>
 
                     {/* Cells */}

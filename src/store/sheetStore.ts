@@ -7,6 +7,9 @@ export const sheetConfig= atom({
     }
 })
 
+// interface SheetData {
+//     [key: string]: string | number | undefined;
+// }
 export const sheetData = atom({
     key:'sheetData',
     default:{}

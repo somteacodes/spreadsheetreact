@@ -1,9 +1,11 @@
 import { FC, useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from "react";
 import "./Cell.css";
-import { useRecoilState } from "recoil";
+import { useRecoilState,useRecoilValue } from "recoil";
 
 import { cellValueState } from "../../store/cellStore";
 import {sheetData} from '../../store/sheetStore'
+import { evaluatedCellValueStore } from "../../store/EvaluatedCellValueStore";
+import { cellKeyToMatrix } from "../../utils/cellKeyToMatrix";
 type CellProps = {
   cellKey: string;
 };
@@ -15,11 +17,11 @@ const Cell: FC<CellProps> = ({cellKey}) => {
   const [cellValue, setCellValue] = useRecoilState<string>(
     cellValueState(cellKey)
   );
-
+    const EvaluatedCellValueStore= useRecoilValue<string>(evaluatedCellValueStore(cellKey))
   const [sheetDataState, setSheetDataState] = useRecoilState(
     sheetData
   )
-
+const [displayCellValue, setDisplayCellValue] = useState('')
   // functions
   const changeLabelToInput = () => {
     setEditMode(true);
@@ -36,7 +38,7 @@ const Cell: FC<CellProps> = ({cellKey}) => {
       // setSheetDataState({...sheetDataState, [cellKey]: cellValue})
     
     } else{
-      console.log('sheet state',sheetDataState)
+      // console.log('sheet state',sheetDataState)
     }
   };
 
@@ -45,6 +47,27 @@ const Cell: FC<CellProps> = ({cellKey}) => {
         changeInputToLabel();
    
         setSheetDataState({...sheetDataState, [cellKey]: cellValue})
+        // if(cellValue.startsWith('=')){
+         
+          // console.log('on enter', cellKeyToMatrix(EvaluatedCellValueStore))
+          // const newCellKey=cellKeyToMatrix(EvaluatedCellValueStore)
+          // const newCellValue=sheetDataState[newCellKey as keyof typeof sheetDataState] 
+          // if(newCellValue){
+          //   setSheetDataState({...sheetDataState, [cellKey]: newCellValue})
+          //   console.log('sheet state',newCellValue)
+          //     // setCellValue(newCellValue)
+          //     setDisplayCellValue(newCellValue)
+          // }else{
+          //   setCellValue('')
+          //   console.log('undefined cell value')
+          // }
+         
+        // }else{
+          // console.log('on enter',cellKey)
+          // setDisplayCellValue(cellValue)
+          // console.log('sheet state no reference done',sheetDataState)
+        // }
+      
         // console.log('sheet state',sheetDataState)
       }
      
@@ -78,7 +101,9 @@ const Cell: FC<CellProps> = ({cellKey}) => {
           onClick={changeLabelToInput}
           className="cellLabel"
         >
-          {cellValue}
+          {/* {displayCellValue} */}
+          {/* {cellKey} */}
+          {EvaluatedCellValueStore}
         </div>
       )}
     </>
