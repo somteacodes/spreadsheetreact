@@ -44,9 +44,9 @@ const [displayCellValue, setDisplayCellValue] = useState('')
 
   const removeInputFocus= (event:KeyboardEvent<HTMLInputElement>)=>{
       if(event.key ==='Enter'){
-        changeInputToLabel();
-   
-        setSheetDataState({...sheetDataState, [cellKey]: cellValue})
+        changeInputToLabel();   
+        
+
         // if(cellValue.startsWith('=')){
          
           // console.log('on enter', cellKeyToMatrix(EvaluatedCellValueStore))
@@ -74,6 +74,7 @@ const [displayCellValue, setDisplayCellValue] = useState('')
   }
   const updateCellValue = (event: ChangeEvent<HTMLInputElement>) => {
     setCellValue(event.target.value);
+    setSheetDataState({...sheetDataState, [cellKey]: event.target.value})
        
   };
 

@@ -1,15 +1,12 @@
 import { FC, useState, useEffect } from "react";
 import Sheet from "../components/Sheet/Sheet";
-import { useRecoilCallback } from "recoil";
-import { sheetConfig } from "../store/sheetStore";
+import { useRecoilCallback, useRecoilValue } from "recoil";
+import { sheetConfig, sheetData } from "../store/sheetStore";
 const SheetView: FC = () => {
-  const logState = useRecoilCallback(({ snapshot }) => () => {
-    console.log("State: ", snapshot.getLoadable(sheetConfig).contents);
-    // const newSnapshot = snapshot.map(({ set }) => set(sheetConfig, 42));
-  });
+ const currentSheetData = useRecoilValue(sheetData)
   return (
     <>
-      <button onClick={() => console.log(logState)}>Save Sheet</button>
+      <button onClick={() => console.log(currentSheetData)}>Save Sheet</button>
       <Sheet />
     </>
   );
