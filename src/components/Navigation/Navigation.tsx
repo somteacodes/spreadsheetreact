@@ -1,6 +1,6 @@
-import { FC, useState, useEffect } from "react";
+import { FC } from "react";
 import { Link } from "react-router-dom";
-import { useRecoilValue, useResetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { sheetConfig, sheetData } from "../../store/sheetStore";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Navigation.css";
@@ -26,7 +26,7 @@ const Navigation: FC = () => {
   // const resetStates=() => {
   //   useResetRecoilState()
   // }
-  
+
   // template
   return (
     <div className="optionsRow">

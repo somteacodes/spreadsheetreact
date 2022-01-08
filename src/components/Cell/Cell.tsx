@@ -24,12 +24,7 @@ const Cell: FC<CellProps> = ({cellKey}) => {
   // functions
   const changeLabelToInput = () =>  setEditMode(true);
   const changeInputToLabel = () => setEditMode(false);
-  
-  const onClickOutsideInputHandler = (event: MouseEvent) => {
-    if ((event.target as HTMLElement)?.dataset?.cellKey !== cellKey) {
-      changeInputToLabel();   
-     } 
-  };
+
 
   const removeInputFocus= (event:KeyboardEvent<HTMLInputElement>)=>{
       if(event.key ==='Enter'){
@@ -44,9 +39,15 @@ const Cell: FC<CellProps> = ({cellKey}) => {
 
   // lifecycles and sideEffects
   useEffect(() => {
+      
+  const onClickOutsideInputHandler = (event: MouseEvent) => {
+    if ((event.target as HTMLElement)?.dataset?.cellKey !== cellKey) {
+      changeInputToLabel();   
+     } 
+  };
     document.addEventListener("click", onClickOutsideInputHandler);
     return document.addEventListener("click", onClickOutsideInputHandler);
-  }, []);
+  }, [cellKey]);
 
   // template
   return (

@@ -32,19 +32,20 @@ const SheetPreview: FC = () => {
     const {numOfCols, numOfRows} =selectedSheet.config
     const sheetData = selectedSheet.data
     // /functions
-    const loadSheet=() => {
-       const  spreadSheets=JSON.parse(localStorage.getItem('spreadsheet')|| "[]")
-       const selectedSheet=spreadSheets.filter((sheet: { config: { code: string | undefined; }; }) =>sheet.config.code ===sheetCode)
-       setselectedSheet(selectedSheet[0])
-        
-       console.log(selectedSheet[0])
-    }
+   
 
     // lifecycles
     useEffect(() => {
+        function loadSheet() {
+            const  spreadSheets=JSON.parse(localStorage.getItem('spreadsheet')|| "[]")
+            const selectedSheet=spreadSheets.filter((sheet: { config: { code: string | undefined; }; }) =>sheet.config.code ===sheetCode)
+            setselectedSheet(selectedSheet[0])
+             
+            console.log(selectedSheet[0])
+         }
         loadSheet()
         return loadSheet()
-    },[])
+    },[sheetCode])
     // template
   return (
     <>
