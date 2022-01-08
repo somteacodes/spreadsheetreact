@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Card from "../../components/Card/Card";
 import "./SheetList.css";
 // let sheetList:any[] = [
 // //   
@@ -19,15 +19,23 @@ const SheetList: FC = () => {
   return (
     <div className="gridContainer">
       {sheetList.length > 0 ? sheetList.map((sheet:any) => (
-        <Link 
-        to={`/preview/${sheet.config.code}`}
-        className="card" key={sheet.config.code}>
-          <img
-            src="https://img.icons8.com/color/48/000000/new-spreadsheet.png"
-            alt="Sheet Icon"
-          />
-          <p className="title">{sheet.config.code}</p>
-        </Link>
+        // <div 
+        
+        // className="card" key={sheet.config.code}>
+        //   <img
+        //     src="https://img.icons8.com/color/48/000000/new-spreadsheet.png"
+        //     alt="Sheet Icon"
+        //   />
+        //   <p className="title">{sheet.config.code}</p>
+          
+        //     <Link
+        //     className="btn blue-btn"
+        //     to={`/preview/${sheet.config.code}`}
+        //     >View</Link> 
+         
+           
+        // </div>
+        <Card sheetCode={sheet.config.code}/>
       )):
       'No Sheets yet. Create new sheets'
       }
