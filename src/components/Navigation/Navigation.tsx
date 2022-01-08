@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import { sheetConfig, sheetData } from "../../store/sheetStore";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Navigation.css";
+import Toogle from "../Toogle/Toogle";
 const Navigation: FC = () => {
   const location = useLocation();
   // state
@@ -30,9 +31,13 @@ const Navigation: FC = () => {
   // template
   return (
     <div className="optionsRow">
-      <Link to="/" className="blue-btn btn">
+    <div>
+    <Link to="/" className="blue-btn btn">
         New Sheet
       </Link>
+    </div>
+
+     {location.pathname==='/'&& <Toogle/>}
       <div>
         <Link to="/list" className="black-btn btn">
           View Sheets

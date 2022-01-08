@@ -4,8 +4,8 @@ export const sheetConfig= atom({
     key: 'sheetConfig',
     default: {
     code:nanoid(10),
-    numOfCols:10, //number of columns
-    numOfRows:200, //number of rows
+    numOfCols:30, //number of columns
+    numOfRows:100, //number of rows
     }
 })
 
