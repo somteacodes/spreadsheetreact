@@ -12,6 +12,7 @@ export const getEquationExpression = (
     expression.includes(cellKey)
   );
   if (filterFoundCells.length) {
+    // alert('A circular reference error')
     return "!ERROR";
     }
 

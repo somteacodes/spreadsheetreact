@@ -16,3 +16,8 @@ export const sheetData = atom({
     key:'sheetData',
     default:{}
 })
+
+export const sheetError = atom({
+    key:'sheetError',
+    default:false
+})
