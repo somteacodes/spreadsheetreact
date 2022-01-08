@@ -8,7 +8,7 @@ import Toogle from "../Toogle/Toogle";
 const Navigation: FC = () => {
   const location = useLocation();
   // state
-  // console.log(location);
+ 
   const currentSheetData = {
     config: useRecoilValue(sheetConfig),
     data: useRecoilValue(sheetData),
@@ -20,14 +20,11 @@ const Navigation: FC = () => {
     let listOfSheets = JSON.parse(localStorage.getItem("spreadsheet") || "[]");
     listOfSheets.push(currentSheetData);
     localStorage.setItem("spreadsheet", JSON.stringify(listOfSheets));
-    console.log(listOfSheets);
+ 
     navigate("/list");
   };
 
-  // const resetStates=() => {
-  //   useResetRecoilState()
-  // }
-
+ 
   // template
   return (
     <div className="optionsRow">

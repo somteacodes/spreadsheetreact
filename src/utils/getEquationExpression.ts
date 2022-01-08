@@ -12,11 +12,11 @@ export const getEquationExpression = (
     expression.includes(cellKey)
   );
   if (filterFoundCells.length) {
-    // alert('A circular reference error')
+  
     return "!ERROR";
     }
 
-    // no need to spread if limits of expression input is in the format /[A-Z]+[0-9]/
+    // no need to spread if limits of expression input remain as snce cell attributes{A2 or B2} 
   const cellValues = [...Array.from(expression.matchAll(/[A-Z]+[0-9]+/gi))]
     .map((regrexOutput: any) => regrexOutput[0])
     .map((cellKey: string) => {
